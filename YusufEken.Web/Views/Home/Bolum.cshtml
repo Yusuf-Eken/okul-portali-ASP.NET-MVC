@@ -1,0 +1,114 @@
+﻿@model YusufEken.EntityLayer.Bolum
+@using YusufEken.EntityLayer
+@using YusufEken.Web.Models
+
+@{
+    ViewBag.Title = Model.BolumAd;
+    var bolumDersleriList = ViewBag.BolumDersleriByDonem as List<BolumDersViewModel>;
+}
+
+<div class="container mt-4">
+    <h2 class="page-section-heading">@Model.BolumAd</h2>
+
+    <ul class="nav nav-tabs nav-fill mb-4" id="bolumTab" role="tablist">
+        <li class="nav-item" role="presentation">
+            <button class="nav-link active" id="personeller-tab" data-bs-toggle="tab" data-bs-target="#personeller-tab-pane" type="button" role="tab" aria-controls="personeller-tab-pane" aria-selected="true">Bölüm Personelleri</button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="dersler-tab" data-bs-toggle="tab" data-bs-target="#dersler-tab-pane" type="button" role="tab" aria-controls="dersler-tab-pane" aria-selected="false">Bölüm Dersleri</button>
+        </li>
+    </ul>
+
+    <div class="tab-content" id="bolumTabContent">
+        <div class="tab-pane fade show active" id="personeller-tab-pane" role="tabpanel" aria-labelledby="personeller-tab" tabindex="0">
+            <div class="row justify-content-center">
+                @if (Model.Personeller != null && Model.Personeller.Any())
+                {
+                    foreach (var personel in Model.Personeller.OrderBy(p => p.PerAd).ThenBy(p => p.PerSoyad))
+                    {
+                        <div class="col-lg-4 col-md-6 mb-4">
+                            <div class="card h-100 text-center shadow-sm">
+                                <div class="py-3">
+                                    @if (!string.IsNullOrEmpty(personel.ImageUrl) && !personel.ImageUrl.Contains("default.png"))
+                                    {
+                                        <img src="@Url.Content(personel.ImageUrl)" alt="@personel.PerAd @personel.PerSoyad" class="rounded-circle mx-auto" style="width: 120px; height: 120px; object-fit: cover; border: 3px solid #f0f0f0;" />
+                                    }
+                                    else
+                                    {
+                                        <img src="@Url.Content("~/Images/PersonelImages/default.png")" alt="Varsayılan" class="rounded-circle mx-auto" style="width: 120px; height: 120px; object-fit: cover; border: 3px solid #f0f0f0;" />
+                                    }
+                                </div>
+                                <div class="card-body d-flex flex-column">
+                                    <h5 class="card-title fw-bold mt-0 mb-1" style="font-size: 1.1rem;">@personel.Unvan @personel.PerAd @personel.PerSoyad</h5>
+                                    <p class="card-text text-muted small mb-1">@personel.Bolum.BolumAd</p>
+                                    <p class="card-text text-muted small mb-2" style="font-size: 0.85em;">
+                                        <i class="fas fa-envelope me-1"></i>@personel.PerEposta
+                                    </p>
+                                    <div class="mt-auto">
+                                        @Html.ActionLink("Detay", "Personel", "Home", new { id = personel.Id }, new { @class = "btn btn-outline-success btn-sm px-3" })
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                }
+                else
+                {
+                    <div class="col-12"><p class="text-center">Bu bölümde kayıtlı personel bulunmamaktadır.</p></div>
+                }
+            </div>
+        </div>
+        <div class="tab-pane fade" id="dersler-tab-pane" role="tabpanel" aria-labelledby="dersler-tab" tabindex="0">
+            @if (bolumDersleriList != null && bolumDersleriList.Any())
+            {
+                foreach (var donemGrubu in bolumDersleriList)
+                {
+                    <div class="mb-4">
+                        <h4 class="text-white p-2 rounded" style="background-color: #198754; font-size: 1.2rem;">
+                            @donemGrubu.Donem.DonemAd
+                            <span class="float-end badge bg-light text-dark fw-normal" style="font-size: 0.85rem; padding: 0.4em 0.6em;">
+                                Toplam: @donemGrubu.ToplamKredi Kredi | @donemGrubu.ToplamAKTS AKTS
+                            </span>
+                        </h4>
+                        @if (donemGrubu.Dersler.Any())
+                        {
+                            <div class="table-responsive">
+                                <table class="table table-striped table-bordered table-hover table-sm">
+                                    <thead class="table-light">
+                                        <tr>
+                                            <th>Ders Adı</th>
+                                            <th class="text-center">T+U</th>
+                                            <th class="text-center">Kredi</th>
+                                            <th class="text-center">AKTS</th>
+                                            <th>Öğretim Elemanı</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var ders in donemGrubu.Dersler)
+                                        {
+                                            <tr>
+                                                <td>@ders.DersAd</td>
+                                                <td class="text-center">@ders.Teori+@ders.Uygulama</td>
+                                                <td class="text-center">@ders.Kredi</td>
+                                                <td class="text-center">@ders.AKTS</td>
+                                                <td>@(ders.Personel != null ? ders.Personel.Unvan + " " + ders.Personel.PerAd + " " + ders.Personel.PerSoyad : "-")</td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                        }
+                        else
+                        {
+                            <p>Bu dönem için ders bulunmamaktadır.</p>
+                        }
+                    </div>
+                }
+            }
+            else
+            {
+                <p>Bu bölüme ait ders bulunmamaktadır.</p>
+            }
+        </div>
+    </div>
+</div>

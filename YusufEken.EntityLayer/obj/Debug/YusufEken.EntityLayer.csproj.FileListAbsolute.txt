@@ -1,0 +1,24 @@
+C:\Users\ASUS\Desktop\YusufEken\YusufEken.EntityLayer\bin\Debug\YusufEken.EntityLayer.dll.config
+C:\Users\ASUS\Desktop\YusufEken\YusufEken.EntityLayer\bin\Debug\YusufEken.EntityLayer.dll
+C:\Users\ASUS\Desktop\YusufEken\YusufEken.EntityLayer\bin\Debug\YusufEken.EntityLayer.pdb
+C:\Users\ASUS\Desktop\YusufEken\YusufEken.EntityLayer\bin\Debug\EntityFramework.dll
+C:\Users\ASUS\Desktop\YusufEken\YusufEken.EntityLayer\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\ASUS\Desktop\YusufEken\YusufEken.EntityLayer\bin\Debug\EntityFramework.xml
+C:\Users\ASUS\Desktop\YusufEken\YusufEken.EntityLayer\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\ASUS\Desktop\YusufEken\YusufEken.EntityLayer\obj\Debug\YusufEken.EntityLayer.csproj.AssemblyReference.cache
+C:\Users\ASUS\Desktop\YusufEken\YusufEken.EntityLayer\obj\Debug\YusufEken.EntityLayer.csproj.CoreCompileInputs.cache
+C:\Users\ASUS\Desktop\YusufEken\YusufEken.EntityLayer\obj\Debug\YusufEke.2CFFAB2F.Up2Date
+C:\Users\ASUS\Desktop\YusufEken\YusufEken.EntityLayer\obj\Debug\YusufEken.EntityLayer.dll
+C:\Users\ASUS\Desktop\YusufEken\YusufEken.EntityLayer\obj\Debug\YusufEken.EntityLayer.pdb
+C:\Users\ASUS\Desktop\Her şey\YusufEken\YusufEken.EntityLayer\bin\Debug\YusufEken.EntityLayer.dll.config
+C:\Users\ASUS\Desktop\Her şey\YusufEken\YusufEken.EntityLayer\bin\Debug\YusufEken.EntityLayer.dll
+C:\Users\ASUS\Desktop\Her şey\YusufEken\YusufEken.EntityLayer\bin\Debug\YusufEken.EntityLayer.pdb
+C:\Users\ASUS\Desktop\Her şey\YusufEken\YusufEken.EntityLayer\bin\Debug\EntityFramework.dll
+C:\Users\ASUS\Desktop\Her şey\YusufEken\YusufEken.EntityLayer\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\ASUS\Desktop\Her şey\YusufEken\YusufEken.EntityLayer\bin\Debug\EntityFramework.xml
+C:\Users\ASUS\Desktop\Her şey\YusufEken\YusufEken.EntityLayer\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\ASUS\Desktop\Her şey\YusufEken\YusufEken.EntityLayer\obj\Debug\YusufEken.EntityLayer.csproj.AssemblyReference.cache
+C:\Users\ASUS\Desktop\Her şey\YusufEken\YusufEken.EntityLayer\obj\Debug\YusufEken.EntityLayer.csproj.CoreCompileInputs.cache
+C:\Users\ASUS\Desktop\Her şey\YusufEken\YusufEken.EntityLayer\obj\Debug\YusufEke.2CFFAB2F.Up2Date
+C:\Users\ASUS\Desktop\Her şey\YusufEken\YusufEken.EntityLayer\obj\Debug\YusufEken.EntityLayer.dll
+C:\Users\ASUS\Desktop\Her şey\YusufEken\YusufEken.EntityLayer\obj\Debug\YusufEken.EntityLayer.pdb

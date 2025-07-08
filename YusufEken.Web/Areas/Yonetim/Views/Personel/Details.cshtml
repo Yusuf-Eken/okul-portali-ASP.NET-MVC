@@ -1,0 +1,79 @@
+﻿@model YusufEken.EntityLayer.Personel
+@using YusufEken.EntityLayer
+
+@{
+    ViewBag.Title = "Personel Detayları";
+    var verdigiDersler = ViewBag.VerdigiDersler as List<Ders>;
+}
+
+<h2>Personel Detayları: @Model.Unvan @Model.PerAd @Model.PerSoyad</h2>
+
+<div>
+    <h4>Genel Bilgiler</h4>
+    <hr />
+    <div class="row">
+        <div class="col-md-3">
+            @if (!string.IsNullOrEmpty(Model.ImageUrl) && !Model.ImageUrl.Contains("default.png"))
+            {
+                <img src="@Url.Content(Model.ImageUrl)" alt="Personel Resmi" class="img-responsive img-thumbnail" style="max-width:200px;" />
+            }
+            else
+            {
+                <img src="@Url.Content("~/Content/Images/Personel/default.png")" alt="Varsayılan Resim" class="img-responsive img-thumbnail" style="max-width:200px;" />
+            }
+        </div>
+        <div class="col-md-9">
+            <dl class="dl-horizontal">
+                <dt>@Html.DisplayNameFor(model => model.Unvan)</dt>
+                <dd>@Html.DisplayFor(model => model.Unvan)</dd>
+
+                <dt>Adı Soyadı</dt>
+                <dd>@Html.DisplayFor(model => model.PerAd) @Html.DisplayFor(model => model.PerSoyad)</dd>
+
+                <dt>@Html.DisplayNameFor(model => model.PerEposta)</dt>
+                <dd>@Html.DisplayFor(model => model.PerEposta)</dd>
+
+                <dt>@Html.DisplayNameFor(model => model.DahiliNo)</dt>
+                <dd>@Html.DisplayFor(model => model.DahiliNo)</dd>
+
+                <dt>Bölümü</dt>
+                <dd>@Html.DisplayFor(model => model.Bolum.BolumAd)</dd>
+            </dl>
+        </div>
+    </div>
+
+    <hr />
+    <h4>Verdiği Dersler</h4>
+    @if (verdigiDersler != null && verdigiDersler.Any())
+    {
+        <table class="table table-striped">
+            <tr>
+                <th>Ders Adı</th>
+                <th>Bölümü</th>
+                <th>Dönemi</th>
+                <th>T+U</th>
+                <th>Kredi</th>
+                <th>AKTS</th>
+            </tr>
+            @foreach (var ders in verdigiDersler)
+            {
+                <tr>
+                    <td>@ders.DersAd</td>
+                    <td>@ders.Bolum.BolumAd</td>
+                    <td>@ders.Donem.DonemAd</td>
+                    <td>@ders.Teori+@ders.Uygulama</td>
+                    <td>@ders.Kredi</td>
+                    <td>@ders.AKTS</td>
+                </tr>
+            }
+        </table>
+    }
+    else
+    {
+        <p>Bu personele atanmış ders bulunmamaktadır.</p>
+    }
+</div>
+<p style="margin-top:20px;">
+    @Html.ActionLink("Güncelle", "Edit", new { id = Model.Id }, new { @class = "btn btn-primary" }) |
+    @Html.ActionLink("Listeye Dön", "Index", null, new { @class = "btn btn-default" })
+</p>

@@ -1,0 +1,38 @@
+﻿@model IEnumerable<YusufEken.EntityLayer.Donem>
+
+@{
+    ViewBag.Title = "Dönem Listesi";
+}
+
+<h2>Dönem Listesi</h2>
+
+<table class="table table-bordered table-striped">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.DonemAd)
+        </th>
+        <th>
+            <a href="@Url.Action("Create")" class="btn btn-primary">
+                <i class="fas fa-plus-circle me-1"></i> Yeni Dönem Ekle
+            </a>
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.DonemAd)
+            </td>
+            <td>
+                <a href="@Url.Action("Edit", new { id=item.Id })" class="btn btn-sm btn-success me-1" title="Güncelle">
+                    <i class="fas fa-edit"></i> Güncelle
+                </a> |
+                <a href="@Url.Action("Delete", new { id=item.Id })" class="btn btn-sm btn-danger" title="Sil">
+                    <i class="fas fa-trash-alt"></i> Sil
+                </a>
+            </td>
+        </tr>
+    }
+
+</table>

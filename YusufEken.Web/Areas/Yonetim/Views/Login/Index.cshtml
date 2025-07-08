@@ -1,0 +1,114 @@
+﻿@{
+    Layout = null;
+    ViewBag.Title = "Giriş Yap";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <title>@ViewBag.Title - Yönetim Paneli</title>
+    <style>
+        body {
+            background-color: #f8f9fa;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .login-container {
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+        }
+
+        .login-logo img {
+            max-width: 200px;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .form-control {
+            border-radius: 4px;
+            padding: 10px;
+        }
+
+        .btn-login {
+            background-color: #28a745;
+            border-color: #28a745;
+            color: white;
+            padding: 10px;
+            width: 100%;
+            font-size: 16px;
+            border-radius: 4px;
+        }
+
+            .btn-login:hover {
+                background-color: #218838;
+                border-color: #1e7e34;
+                color: white;
+            }
+
+        .validation-summary-errors ul {
+            list-style-type: none;
+            padding-left: 0;
+            color: #dc3545;
+        }
+
+        .validation-summary-errors li {
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-logo">
+            <img src="@Url.Content("~/Images/duzce-universitesi-logo.png")" alt="Düzce Üniversitesi Logo" />
+        </div>
+        <h4>Lütfen Giriş Yapınız</h4>
+        <hr />
+        @using (Html.BeginForm("Index", "Login", new { ReturnUrl = ViewBag.ReturnUrl, area = "Yonetim" }, FormMethod.Post, new { role = "form" }))
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+            <div class="form-group">
+                <label for="eposta" class="control-label">E-Posta Adresi</label>
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                    @Html.TextBox("eposta", (string)ViewBag.Eposta, new { @class = "form-control", placeholder = "E-Posta Adresiniz" })
+                </div>
+                @Html.ValidationMessage("Eposta", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group">
+                <label for="parola" class="control-label">Parola</label>
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                    @Html.Password("parola", null, new { @class = "form-control", placeholder = "Parolanız" })
+                </div>
+                @Html.ValidationMessage("Parola", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Giriş" class="btn btn-login" />
+            </div>
+        }
+    </div>
+
+    <script src="~/Scripts/jquery-3.7.1.min.js"></script>
+    <script src="~/Scripts/bootstrap.bundle.min.js"></script>
+</body>
+</html>

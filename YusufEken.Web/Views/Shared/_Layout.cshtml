@@ -1,0 +1,116 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Okul Portalı</title>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+
+    <style>
+        body {
+            padding-top: 56px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .navbar-custom-site {
+            background-color: #ffffff;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+            .navbar-custom-site .navbar-brand img {
+                height: 30px;
+            }
+
+            .navbar-custom-site .nav-link {
+                color: #555;
+                font-weight: 500;
+            }
+
+                .navbar-custom-site .nav-link:hover,
+                .navbar-custom-site .nav-link.active {
+                    color: #007bff;
+                }
+
+            .navbar-custom-site .dropdown-menu {
+                border-color: #e0e0e0;
+                box-shadow: 0 .125rem .25rem rgba(0,0,0,.075);
+            }
+
+            .navbar-custom-site .dropdown-item:hover {
+                background-color: #007bff;
+                color: #fff;
+            }
+
+        .footer {
+            margin-top: 30px;
+            padding-top: 20px;
+            padding-bottom: 20px;
+            border-top: 1px solid #e0e0e0;
+            text-align: center;
+            background-color: #f8f9fa;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light navbar-custom-site fixed-top">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="@Url.Action("Index", "Home", new { area = "" })">
+                <img src="@Url.Content("~/Images/duzce_univ_logo.png")" alt="Okul Logosu">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link @(ViewBag.ActiveMenu == "AnaSayfa" ? "active" : "")" aria-current="page" href="@Url.Action("Index", "Home")">Ana Sayfa</a>
+                    </li>
+                    @{
+                        var bolumlerForLayout = ViewBag.LayoutBolumler as List<YusufEken.EntityLayer.Bolum>;
+                        var currentController = ViewContext.RouteData.Values["controller"]?.ToString();
+                        var currentAction = ViewContext.RouteData.Values["action"]?.ToString();
+                        var isActiveBolumlerDropdown = currentController == "Home" && currentAction == "Bolum";
+                    }
+                    @if (bolumlerForLayout != null && bolumlerForLayout.Any())
+                    {
+                        <li class="nav-item dropdown @(isActiveBolumlerDropdown ? "active" : "")">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownBolumler" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Bölümler
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdownBolumler">
+                                @foreach (var bolum in bolumlerForLayout)
+                                {
+                                    <li><a class="dropdown-item" href="@Url.Action("Bolum", "Home", new { area = "", id = bolum.Id })">@bolum.BolumAd</a></li>
+                                }
+                            </ul>
+                        </li>
+                    }
+                    else
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Bölümler</a>
+                        </li>
+                    }
+                    <li class="nav-item">
+                        <a class="nav-link @(ViewBag.ActiveMenu == "Iletisim" ? "active" : "")" href="@Url.Action("Iletisim", "Home")">İletişim</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link @(ViewBag.ActiveMenu == "Hakkinda" ? "active" : "")" href="@Url.Action("Hakkinda", "Home")">Hakkında</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container body-content" style="padding-top: 20px;">
+        @RenderBody()
+        <hr />
+        <footer class="footer">
+            <p>© @DateTime.Now.Year - Yusuf Eken - İnternet Programcılığı II Final Projesi</p>
+        </footer>
+    </div>
+    <script src="~/Scripts/jquery-3.7.1.min.js"></script>
+    <script src="~/Scripts/bootstrap.bundle.min.js"></script>
+    @RenderSection("scripts", required: false)
+</body>
+</html>

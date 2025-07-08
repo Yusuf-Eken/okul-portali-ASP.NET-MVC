@@ -1,0 +1,57 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\ASUS\\Desktop\\Her \u015Fey\\YusufEken\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{1CCBBEAB-BB9E-4F22-B952-DC855A062B06}|YusufEken.Web\\YusufEken.Web.csproj|c:\\users\\asus\\desktop\\her \u015Fey\\yusufeken\\yusufeken.web\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1CCBBEAB-BB9E-4F22-B952-DC855A062B06}|YusufEken.Web\\YusufEken.Web.csproj|solutionrelative:yusufeken.web\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1CCBBEAB-BB9E-4F22-B952-DC855A062B06}|YusufEken.Web\\YusufEken.Web.csproj|C:\\Users\\ASUS\\Desktop\\Her \u015Fey\\YusufEken\\yusufeken.web\\areas\\yonetim\\yonetimarearegistration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1CCBBEAB-BB9E-4F22-B952-DC855A062B06}|YusufEken.Web\\YusufEken.Web.csproj|solutionrelative:yusufeken.web\\areas\\yonetim\\yonetimarearegistration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "HomeController.cs",
+              "DocumentMoniker": "C:\\Users\\ASUS\\Desktop\\Her \u015Fey\\YusufEken\\YusufEken.Web\\Controllers\\HomeController.cs",
+              "RelativeDocumentMoniker": "YusufEken.Web\\Controllers\\HomeController.cs",
+              "ToolTip": "C:\\Users\\ASUS\\Desktop\\Her \u015Fey\\YusufEken\\YusufEken.Web\\Controllers\\HomeController.cs",
+              "RelativeToolTip": "YusufEken.Web\\Controllers\\HomeController.cs",
+              "ViewState": "AgIAADQAAAAAAAAAAAAkwEMAAAAeAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-25T12:17:25.57Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "YonetimAreaRegistration.cs",
+              "DocumentMoniker": "C:\\Users\\ASUS\\Desktop\\Her \u015Fey\\YusufEken\\YusufEken.Web\\Areas\\Yonetim\\YonetimAreaRegistration.cs",
+              "RelativeDocumentMoniker": "YusufEken.Web\\Areas\\Yonetim\\YonetimAreaRegistration.cs",
+              "ToolTip": "C:\\Users\\ASUS\\Desktop\\Her \u015Fey\\YusufEken\\YusufEken.Web\\Areas\\Yonetim\\YonetimAreaRegistration.cs",
+              "RelativeToolTip": "YusufEken.Web\\Areas\\Yonetim\\YonetimAreaRegistration.cs",
+              "ViewState": "AgIAAAcAAAAAAAAAAAAQwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-25T12:17:14.817Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

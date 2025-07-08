@@ -1,0 +1,83 @@
+﻿@model IEnumerable<YusufEken.EntityLayer.Ders>
+
+@{
+    ViewBag.Title = "Ders Listesi";
+}
+
+<h2>Ders Listesi</h2>
+
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success">@TempData["SuccessMessage"]</div>
+}
+@if (TempData["ErrorMessage"] != null)
+{
+    <div class="alert alert-danger">@TempData["ErrorMessage"]</div>
+}
+
+<table class="table table-bordered table-striped">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().DersAd)
+        </th>
+        <th>
+            Bölüm Adı
+        </th>
+        <th>
+            Dönem Adı
+        </th>
+        <th>
+            Personel
+        </th>
+        <th>
+            T+U
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().Kredi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().AKTS)
+        </th>
+        <th>
+            <a href="@Url.Action("Create")" class="btn btn-primary">
+                <i class="fas fa-plus-circle me-1"></i> Yeni Ders Ekle
+            </a>
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.DersAd)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Bolum.BolumAd)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Donem.DonemAd)
+            </td>
+            <td>
+                @(item.Personel != null ? Html.DisplayFor(modelItem => item.Personel.PerAd) + " " + Html.DisplayFor(modelItem => item.Personel.PerSoyad) : "Atanmamış")
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Teori)+@Html.DisplayFor(modelItem => item.Uygulama)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Kredi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AKTS)
+            </td>
+            <td>
+                <a href="@Url.Action("Edit", new { id=item.Id })" class="btn btn-xs btn-success me-1" title="Güncelle">
+                    <i class="fas fa-edit"></i> Güncelle
+                </a>
+                <a href="@Url.Action("Delete", new { id=item.Id })" class="btn btn-xs btn-danger" title="Sil">
+                    <i class="fas fa-trash-alt"></i> Sil
+                </a>
+            </td>
+        </tr>
+    }
+
+</table>

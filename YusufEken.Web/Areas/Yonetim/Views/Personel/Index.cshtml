@@ -1,0 +1,86 @@
+﻿@model IEnumerable<YusufEken.EntityLayer.Personel>
+
+@{
+    ViewBag.Title = "Personel Listesi";
+}
+
+<h2>Personel Listesi</h2>
+
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success">@TempData["SuccessMessage"]</div>
+}
+@if (TempData["ErrorMessage"] != null)
+{
+    <div class="alert alert-danger">@TempData["ErrorMessage"]</div>
+}
+
+<table class="table table-bordered table-striped">
+    <tr>
+        <th>
+            Resim
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().Unvan)
+        </th>
+        <th>
+            Ad Soyad
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().PerEposta)
+        </th>
+        <th>
+            Bölümü
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().DahiliNo)
+        </th>
+        <th><a href="@Url.Action("Create")" class="btn btn-primary">
+                <i class="fas fa-plus-circle me-1"></i> Yeni Personel Ekle
+            </a>
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @if (!string.IsNullOrEmpty(item.ImageUrl) && !item.ImageUrl.Contains("default.png")) // default.png kontrolü eklendi
+                {
+                    <img src="@Url.Content(item.ImageUrl)" alt="Personel Resmi" style="width:50px; height:auto; border-radius:50%;" />
+                }
+                else
+                {
+                    <img src="@Url.Content("~/Content/Images/Personel/default.png")" alt="Varsayılan Resim" style="width:50px; height:auto; border-radius:50%;" />
+                }
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Unvan)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PerAd) @Html.DisplayFor(modelItem => item.PerSoyad)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PerEposta)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Bolum.BolumAd)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DahiliNo)
+            </td>
+            <td>
+                <a href="@Url.Action("Edit", new { id=item.Id })" class="btn btn-xs btn-success me-1" title="Güncelle">
+                    <i class="fas fa-edit"></i> Güncelle
+                </a>
+                <a href="@Url.Action("Details", new { id=item.Id })" class="btn btn-xs btn-info me-1" title="Detaylar">
+                    <i class="fas fa-info-circle"></i> Detaylar
+                </a>
+                <a href="@Url.Action("Delete", new { id=item.Id })" class="btn btn-xs btn-danger" title="Sil">
+                    <i class="fas fa-trash-alt"></i> Sil
+                </a>
+            </td>
+        </tr>
+    }
+
+</table>

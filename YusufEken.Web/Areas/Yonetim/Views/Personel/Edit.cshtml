@@ -1,0 +1,100 @@
+﻿@model YusufEken.EntityLayer.Personel
+
+@{
+    ViewBag.Title = "Personel Düzenle";
+}
+
+<h2>Personel Düzenle</h2>
+
+@using (Html.BeginForm("Edit", "Personel", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Personel Bilgileri</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.Id)
+        @Html.HiddenFor(model => model.ImageUrl)
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Mevcut Resim</label>
+            <div class="col-md-10">
+                @if (!string.IsNullOrEmpty(Model.ImageUrl) && !Model.ImageUrl.Contains("default.png"))
+                {
+                    <img src="@Url.Content(Model.ImageUrl)" alt="Mevcut Personel Resmi" style="width:100px; height:auto; margin-bottom:10px;" />
+                }
+                else
+                {
+                    <img src="@Url.Content("~/Content/Images/Personel/default.png")" alt="Varsayılan Resim" style="width:100px; height:auto; margin-bottom:10px;" />
+                }
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2" for="imageFile">Yeni Resim Yükle (İsteğe Bağlı)</label>
+            <div class="col-md-10">
+                <input type="file" name="imageFile" id="imageFile" class="form-control-file" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Unvan, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Unvan, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Unvan, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.PerAd, "Adı", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.PerAd, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.PerAd, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.PerSoyad, "Soyadı", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.PerSoyad, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.PerSoyad, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.PerEposta, "E-Posta", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.PerEposta, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.PerEposta, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.DahiliNo, "Dahili No", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.DahiliNo, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.DahiliNo, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.BolumId, "Bölümü", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.BolumId, ViewBag.BolumIdList as SelectList, "Bölüm Seçiniz ", htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.BolumId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Güncelle" class="btn btn-primary" />
+                @Html.ActionLink("Listeye Dön", "Index", null, new { @class = "btn btn-default" })
+            </div>
+        </div>
+    </div>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

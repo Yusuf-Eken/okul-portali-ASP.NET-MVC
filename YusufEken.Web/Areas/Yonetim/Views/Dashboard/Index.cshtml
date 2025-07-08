@@ -1,0 +1,51 @@
+﻿@{
+    ViewBag.Title = "Dashboard";
+}
+
+<h2 class="mb-4 fw-bold">Dashboard</h2>
+
+<div class="row">
+    <div class="col-lg-3 col-md-6 mb-4">
+        <a href="@Url.Action("Index", "Bolum", new { area = "Yonetim" })" class="text-decoration-none">
+            <div class="dashboard-card dashboard-card-green text-white h-100">
+                <div class="card-body p-3">
+                    <div class="card-title">Bölüm Sayısı</div>
+                    <div class="card-text-big">@(ViewBag.BolumSayisi)</div>
+                </div>
+            </div>
+        </a>
+    </div>
+
+    <div class="col-lg-3 col-md-6 mb-4">
+        <a href="@Url.Action("Index", "Personel", new { area = "Yonetim" })" class="text-decoration-none">
+            <div class="dashboard-card dashboard-card-red text-white h-100">
+                <div class="card-body p-3">
+                    <div class="card-title">Personel Sayısı</div>
+                    <div class="card-text-big">@(ViewBag.PersonelSayisi)</div>
+                </div>
+            </div>
+        </a>
+    </div>
+
+    <div class="col-lg-3 col-md-6 mb-4">
+        <a href="@Url.Action("Index", "Ders", new { area = "Yonetim" })" class="text-decoration-none">
+            <div class="dashboard-card dashboard-card-yellow h-100">
+                <div class="card-body p-3">
+                    <div class="card-title">Ders Sayısı</div>
+                    <div class="card-text-big">@(ViewBag.DersSayisi)</div>
+                </div>
+            </div>
+        </a>
+    </div>
+
+    <div class="col-lg-3 col-md-6 mb-4">
+        <a href="@Url.Action("Index", "Kullanici", new { area = "Yonetim" })" class="text-decoration-none">
+            <div class="dashboard-card dashboard-card-blue text-white h-100">
+                <div class="card-body p-3">
+                    <div class="card-title">Kullanıcı Sayısı</div>
+                    <div class="card-text-big">@(ViewBag.KullaniciSayisi)</div>
+                </div>
+            </div>
+        </a>
+    </div>
+</div>

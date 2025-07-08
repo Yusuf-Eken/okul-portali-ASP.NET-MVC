@@ -1,0 +1,70 @@
+﻿@model YusufEken.EntityLayer.Ders
+
+@{
+    ViewBag.Title = "Ders Silme Onayı";
+}
+<h3>Bu dersi silmek istediğinize emin misiniz?</h3>
+<div>
+    <h4>Ders Bilgileri</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.DersAd)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.DersAd)
+        </dd>
+
+        <dt>
+            Bölüm
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Bolum.BolumAd)
+        </dd>
+
+        <dt>
+            Dönem
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Donem.DonemAd)
+        </dd>
+
+        <dt>
+            Personel
+        </dt>
+        <dd>
+            @(Model.Personel != null ? Html.DisplayFor(model => model.Personel.PerAd) + " " + Html.DisplayFor(model => model.Personel.PerSoyad) : "Atanmamış")
+        </dd>
+
+        <dt>
+            T+U
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Teori)+@Html.DisplayFor(model => model.Uygulama)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Kredi)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Kredi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AKTS)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.AKTS)
+        </dd>
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Sil" class="btn btn-danger" /> |
+            @Html.ActionLink("Listeye Dön", "Index", null, new { @class = "btn btn-default" })
+        </div>
+    }
+</div>

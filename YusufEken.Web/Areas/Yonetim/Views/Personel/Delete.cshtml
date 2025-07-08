@@ -1,0 +1,65 @@
+﻿@model YusufEken.EntityLayer.Personel
+
+@{
+    ViewBag.Title = "Personel Silme Onayı";
+}
+
+<h3>Bu personeli silmek istediğinize emin misiniz?</h3>
+<div>
+    <h4>Personel Bilgileri</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Resim
+        </dt>
+        <dd>
+            @if (!string.IsNullOrEmpty(Model.ImageUrl) && !Model.ImageUrl.Contains("default.png"))
+            {
+                <img src="@Url.Content(Model.ImageUrl)" alt="Personel Resmi" style="width:80px; height:auto;" />
+            }
+            else
+            {
+                <img src="@Url.Content("~/Content/Images/Personel/default.png")" alt="Varsayılan Resim" style="width:80px; height:auto;" />
+            }
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Unvan)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Unvan)
+        </dd>
+        <dt>
+            Ad Soyad
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.PerAd) @Html.DisplayFor(model => model.PerSoyad)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.PerEposta)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.PerEposta)
+        </dd>
+        <dt>
+            Bölümü
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Bolum.BolumAd)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.DahiliNo)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.DahiliNo)
+        </dd>
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        <div class="form-actions no-color">
+            <input type="submit" value="Sil" class="btn btn-danger" /> |
+            @Html.ActionLink("Listeye Dön", "Index", null, new { @class = "btn btn-default" })
+        </div>
+    }
+</div>
